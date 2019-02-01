@@ -1,0 +1,15 @@
+<pre style="color:red;" class="error-handler"></pre>
+<?php if (isset($this->display_exceptions) && $this->display_exceptions): ?>
+
+    <?php if (isset($this->exception) && $this->exception instanceof Exception): ?>
+        <pre style="color:red;"><?php echo $this->escapeHtml($this->exception->getMessage()) ?></pre>
+    <?php else: ?>
+
+        <h3><?php echo $this->exception->getMessage();
+        //$this->translate('No Exception available')
+        ?></h3>
+
+    <?php endif ?>
+
+    <?php
+endif ?>

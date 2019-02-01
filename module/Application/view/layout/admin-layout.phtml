@@ -1,0 +1,97 @@
+<?php
+if (defined('RUNNING_FROM_ROOT')) {
+    $this->plugin('basePath')->setBasePath($this->basePath() . '/public');
+}
+?>
+<?php
+echo $this->doctype();
+
+use Zend\Session\Container;
+
+$userSession = new Container('User');
+$name = $userSession->name;
+?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php
+        echo $this->headTitle('Admin Section')->setSeparator(' - ')->setAutoEscape(false);
+
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
+
+        //Le styles
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/favicon.ico'))
+                ->prependStylesheet($this->basePath(FILE_PATh . '/css/font-awesome.min.css'))
+                ->prependStylesheet($this->basePath(FILE_PATh . '/css/morris.css'))
+                ->prependStylesheet($this->basePath(FILE_PATh . '/css/sb-admin-2.css'))
+                ->prependStylesheet($this->basePath(FILE_PATh . '/css/dataTables.responsive.css'))
+                ->prependStylesheet($this->basePath(FILE_PATh . '/css/dataTables.bootstrap.css'))
+                ->prependStylesheet($this->basePath(FILE_PATh . '/css/metisMenu.min.css'))
+                ->prependStylesheet($this->basePath(FILE_PATh . '/css/bootstrap.min.css'))
+                ->prependStylesheet($this->basePath(FILE_PATh . '/css/custom.css'));
+
+        //Scripts
+        echo $this->headScript()
+                ->prependFile($this->basePath(FILE_PATh . '/js/sb-admin-2.js'))
+                ->prependFile($this->basePath(FILE_PATh . '/js/dataTables.bootstrap.min.js'))
+                ->prependFile($this->basePath(FILE_PATh . '/js/jquery.dataTables.min.js'))
+                ->prependFile($this->basePath(FILE_PATh . '/js/metisMenu.min.js'))
+                ->prependFile($this->basePath(FILE_PATh . '/js/bootstrap.min.js'))
+                ->prependFile($this->basePath(FILE_PATh . '/js/jquery.min.js'))
+                ->prependFile($this->basePath(FILE_PATh . '/js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath(FILE_PATh . '/js/html5shiv.js'), 'text/javascript', array('conditional' => 'lt IE 9',));
+        ?>
+        <script>
+            $(document).ready(function () {
+                $('#zend-developer-toolbar').remove();
+                //  $(".select2").select2();
+            });
+
+//            $(document).ready(function () {
+//                $('#dataTables-example').DataTable({
+//                });
+//            });
+            basePath = '<?php echo $this->basePath(); ?>';
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <!-- Start Side Bar Menu  -->
+            <nav class="navbar navbar-default white-navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        <div class="logo"><h2>Logo</h2></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="sidebar-nav navbar-collapse ">
+                        <ul class="nav in" id="side-menu">
+                            <li><a href="<?php echo $this->basePath('../admin/'); ?>"><i class="fa fa-home"></i>Dashboard</a></li>
+                            <li> <a href="<?php echo $this->basePath('../admin/user/'); ?>"><i class="fa fa-user"></i>Users</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Side Bar Menu  -->
+            <!-- Start Nav Bar Header  -->
+            <div class="user-header">
+                <div class="pull-right pull-none padding-l-15">
+                    <div class="pull-left" style="padding-top:15px;"> <img src="<?php echo $this->basePath(FILE_PATh . '/img/default_profile_pic.gif'); ?>" width="32" height="32"> </div>
+                    <div class="pull-right pull-none user_details" > <span class="user_name">Welcome <?php echo ucfirst($name); ?> | <a class="logina" href="<?php echo $this->basePath('../admin/logout/') ?>" title="Logout"> Logout </a></span><br>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- End Nav Bar Header  -->
+            <div id="page-wrapper" style="min-height: 380px;">
+                <?php //echo $this->flashMessenger()->render('error', array('alert', 'alert-dismissable', 'alert-danger')); ?> 
+                <?php //echo $this->flashMessenger()->render('info', array('alert', 'alert-dismissable', 'alert-info')); ?> 
+                <?php //echo $this->flashMessenger()->render('default', array('alert', 'alert-dismissable', 'alert-warning')); ?> 
+                <?php //echo $this->flashMessenger()->render('success', array('alert', 'alert-dismissable', 'alert-success')); ?> 
+                <?php echo $this->content; ?> </div>
+            <!-- /container -->
+        </div>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+.error-msg ul{ list-style: none;padding: 0px; margin: 0px;}
+.error-msg{ color: red;}
+.error-msg ul li{ color: red;}
+.required:after { content:" *";color: red; }
+.img_upload{padding-top: 10px;}
+.img_upload img{max-width: 220px;}
+.edit_data,.remove{cursor: pointer;padding-left: 10px;}
+.fa-eye,.fa-edit,.fa-trash{padding-left: 10px;}
+.error_class_inst{color: red; text-align: center;padding-bottom: 15px;}
+
+#list {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #list td, #list th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #list tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #list tr:hover {background-color: #ddd;}
+  
+  #list th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #666;
+    color: white;
+  }

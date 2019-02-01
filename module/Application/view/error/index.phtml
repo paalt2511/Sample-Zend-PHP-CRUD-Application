@@ -1,0 +1,10 @@
+<?php 
+if(isset($this->display_exceptions) && $this->display_exceptions) {
+    if (isset($this->exception) && $this->exception instanceof Exception) {
+        $arr = array('status' => 0, 'Message' => $this->exception->getMessage());
+        echo json_encode($arr);
+    }
+    else 
+        echo $this->translate('No Exception available');
+ } 
+ ?>

@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Please Sign In</h3>
+                </div>
+                <div class="panel-body">
+                    <?php
+                    if (isset($this->errorMessages) && !empty($this->errorMessages)) {
+                        echo "<p style='color:red'>{$this->errorMessages}</p>";
+                    }
+                    ?>
+                    <!--                    Start form open tag-->
+                    <?php
+                    $form = $this->form;
+                    echo $this->form()->openTag($form);
+                    ?>
+                    <fieldset>
+                        <div class="form-group">
+                            <?php echo $this->formelement($form->get('email')); ?>
+                            <span class="error-msg"><?php echo $this->formElementErrors($form->get('email')); ?></span>
+                        </div>
+                        <div class="form-group">
+                            <?php echo $this->formelement($form->get('password')); ?>
+                            <span class="error-msg"><?php echo $this->formElementErrors($form->get('password')); ?></span>
+                        </div>
+                        <!-- Change this to a button or input when using this as a form -->
+                        <?php echo $this->formelement($form->get('submit')); ?>
+                    </fieldset>
+                    <?php echo $this->form()->closeTag(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
